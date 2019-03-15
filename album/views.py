@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http  import HttpResponse
+from django.shortcuts import render, redirect
+from django.http  import HttpResponse,Http404
 import datetime as dt
 
 # Create your views here.
@@ -8,5 +8,5 @@ def welcome(request):
 def picture_of_day(request):
     
     date = dt.date.today()
-    pics = Image.objects.all()
-    return render(request, 'pictures/home.html', {"date": date,"pics":pics})
+    pictures = Image.objects.all()
+    return render(request, 'all-pictures/home.html', {"date": date,"pictures":pictures})
