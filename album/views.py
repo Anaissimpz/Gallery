@@ -26,3 +26,6 @@ def location(request,loc):
     images=Image.get_location_images(loc=loc)
     return render(request, 'pictures/location.html',{"pics": images})
 
+def share(request,id):
+    image=Image.share(id=id)
+    return redirect(pic_of_day)
