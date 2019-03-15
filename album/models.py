@@ -17,3 +17,20 @@ class Location(models.Model):
         location=Location.objects.filter(id=id)
         location.update(country=new,city=newer,place=newest)
         return location
+
+class Category(models.Model):
+     category=models.CharField(max_length=50)
+     def __str__(self):
+        return self.category
+
+     def save_category(self):
+         self.save()
+
+     def delete_category(self):
+      self.delete()
+
+     @classmethod
+     def update_name(cls,id,new):
+      caty=Category.objects.filter(id=id)
+      caty.update(category=new)
+      return caty
