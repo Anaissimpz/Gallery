@@ -34,3 +34,29 @@ class Category(models.Model):
       caty=Category.objects.filter(id=id)
       caty.update(category=new)
       return caty
+      
+class Image(models.Model):
+    image=models.ImageField(upload_to = 'images/')
+    name= models.CharField(max_length =30)
+    description=models.TextField()
+    location=models.ForeignKey(Location,null=True)
+    category=models.ForeignKey(Category, null=True)
+    pub_date = models.DateTimeField(auto_now_add=True,null=True)
+
+    def __str__(self):
+        return self.name
+
+    def save_image(self):
+         self.save()
+    def delete_image(self):
+      self.delete()
+    @classmethod
+    def share(cls,id):
+      image=Image.objects.filter(id=id)
+      self.pyperclip.copy(image.image.cdn_url)
+
+    @classmethod
+    def get_image(cls,id):
+    #  try:
+      image=Image.objects.filter(id=id)
+      return image
