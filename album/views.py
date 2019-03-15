@@ -22,4 +22,7 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'pictures/search.html',{"message":message})
+def location(request,loc):
+    images=Image.get_location_images(loc=loc)
+    return render(request, 'pictures/location.html',{"pics": images})
 
