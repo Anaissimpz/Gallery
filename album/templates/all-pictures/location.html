@@ -1,14 +1,9 @@
 {%extends 'all-pictures/base.html'%} 
 {% block content %}
-{% for pic_item in pics %}
+{% for picture_item in images %}
 
   <div class=" hello">
-    <!-- displaying News articles -->
-    <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="text-center"> {{ pic_item.name }} </h2>
-    </div> -->
-
-    <!--Display news Article images  -->
+  
     <div class="">
       <a href="" data-toggle="modal" data-target="#{{pic_item.id}}"> <img src="{{picture_item.image.url}}" class="img-responsive" alt="Image" height="250" width="250"></a>
     </div>

@@ -1,7 +1,6 @@
 from django.db import models
 import datetime as dt
 
-
 class Location(models.Model):
     country=models.CharField(max_length=20)
     city=models.CharField(max_length=20)
@@ -57,6 +56,31 @@ class Image(models.Model):
 
     @classmethod
     def get_image(cls,id):
-    #  try:
+
+      pictures =Image.objects.filter(id=id)
+      return pictures 
+    @classmethod
+    def get_category_images(cls,caty):
+      cate=Category.objects.filter(category=caty).first()
+      images=Image.objects.filter(category=cate)
+      return images
+    @classmethod
+    def get_location_images(cls,loc):
+      lolo=Location.objects.filter(pk=loc)
+      images=Image.objects.filter(location=lolo)
+      return images
+
+    @classmethod
+    def search_by_name(cls,search_term):
+        images = cls.objects.filter(category__icontains=search_term)
+        return images
+
+    @classmethod
+    def update_name(cls,id,new):
       image=Image.objects.filter(id=id)
+      image.update(name=new)
       return image
+    @classmethod
+    def search_by_category(cls,search_term):
+      image_location = Location.objects.filter(location__country__icontains=search_term)
+      return image_location

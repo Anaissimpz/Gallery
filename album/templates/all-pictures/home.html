@@ -1,0 +1,46 @@
+{%extends 'all-pictures/base.html'%}
+{% block content %} 
+{{ block.super}}
+<body>
+
+<div class="bg-image">
+    {% for picture_item in pictures %}
+    
+  <div class=" gallery">
+      <div class="column col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <a href="" data-toggle="modal" data-target="#{{picture_item.id}}"> <img src="{{picture_item.image.url}}" alt="Image"  height="400" width="400" ></a>
+    </div>
+
+  <div id="{{picture_item.id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content">
+            <div class="modal-header">
+             
+              <img src="{{picture_item.image.url}}" alt="" id='img' height="600" width="680">
+            </div>
+            <div class="modal-body">
+             
+              <h4 class="modal-title text-center">{{picture_item.name}}</h4>
+              <p>{{picture_item.description}}</p>
+              <p> Taken at:{{picture_item.location.country}} {{picture_item.location.city}} {{picture_item.location.place}}</p>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+
+  {% empty %}
+  <div class="row">
+    <h2 class="text-center">There No Image yet</h2>
+  </div>
+  {% endfor %}
+
+</div>
+
+</body>
+{% endblock %}
