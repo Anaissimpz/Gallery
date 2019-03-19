@@ -57,6 +57,7 @@ SECRET_KEY = '_6y(qymq@tcg^52+ydo!g5)fhle=wkmyjs20(se$7)5)_+d9p('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
