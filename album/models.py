@@ -17,6 +17,7 @@ class Location(models.Model):
         location.update(country=new,city=newer,place=newest)
         return location
 
+
 class Category(models.Model):
      category=models.CharField(max_length=50)
      def __str__(self):
